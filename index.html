@@ -99,7 +99,9 @@
 				controls.target.set( 0, 10, 0 );
 				controls.enablePan = false;
 				controls.minDistance = 40.0;
-				controls.maxDistance = 200.0;
+				controls.maxDistance = 300.0;
+				// controls.minAzimuthAngle = - 2.2;
+				// controls.maxAzimuthAngle = 0.5;
 				camera.lookAt( controls.target );
 
 				setLighting();
@@ -122,6 +124,7 @@
 					loadedObject.scale.set( 0.2, 0.2, 0.2);
 					loadedObject.rotation.set(0, 4, 0);
 					loadedObject.children[0].material.color.setHex(0x5af4bb);
+					loadedObject.children[0].material.side = THREE.DoubleSide;
 					scene.add( ship );
 
 				} );
@@ -150,7 +153,8 @@
 
 				sphere = new THREE.Mesh( geometry, material );
 				sphere.castShadow = true;
-				sphere.visible = false;
+				sphere.visible = true;
+				sphere.position.set(-50, -1, 90);
 				scene.add( sphere );
 
 				//
@@ -290,7 +294,7 @@
 
 				var time = performance.now() * 0.001;
 
-				// sphere.position.y = Math.sin( time ) * 5 + 2;
+				sphere.position.y = Math.sin( time * 1.5 ) * 1 + -2;
 				// sphere.rotation.x = time * 0.5;
 				// sphere.rotation.z = time * 0.51;
 
